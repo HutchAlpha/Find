@@ -1,35 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Header, Carte } from './components'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null)
+  const [selectedActivity, setSelectedActivity] = useState<string | null>(null)
+  const isMapOpen = selectedRegion !== null
+
+  const handleActivitySelect = (activity: string) => {
+    setSelectedActivity(activity)
+    console.log(`Activité sélectionnée: ${activity} dans ${selectedRegion} (précédente: ${selectedActivity})`)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="h-screen w-full flex flex-col">
+      {/* Header qui se réduit quand la carte est ouverte */}
+      <div className={`${isMapOpen ? 'h-0' : 'flex-1'} transition-all duration-700 ease-out`}>
+        <Header 
+          onRegionSelect={setSelectedRegion}
+          isMinimal={isMapOpen}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      
+      {/* Carte qui prend 90% quand ouverte */}
+      <div className={`${isMapOpen ? 'flex-1' : 'h-0'} transition-all duration-700 ease-out`}>
+        <Carte 
+          selectedRegion={selectedRegion} 
+          onRegionSelect={setSelectedRegion}
+          onActivitySelect={handleActivitySelect}
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
-
-export default App
