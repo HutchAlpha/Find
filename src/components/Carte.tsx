@@ -1,4 +1,5 @@
 import MapOverlay from "./ui/MapOverlay"
+import Map from "./ui/Map"
 
 export default function Carte({
   selectedRegion,
@@ -16,13 +17,9 @@ export default function Carte({
       isOpen ? 'h-full' : 'h-0'
     }`}>
       
-      {/* Zone de carte pleine largeur */}
-      <div className="w-full h-full bg-green-500">
-        <img
-          src="https://staticmapmaker.com/img/google-placeholder.png"
-          alt="Carte interactive"
-          className="w-full h-full object-cover"
-        />
+      {/* Carte interactive avec Leaflet */}
+      <div className="w-full h-full">
+        <Map selectedRegion={selectedRegion} />
       </div>
       {/* Menu flottant en overlay - Recherche région d'abord */}
       <MapOverlay selectedRegion={selectedRegion} onRegionSelect={onRegionSelect} onActivitySelect={onActivitySelect} />

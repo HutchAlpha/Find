@@ -17,9 +17,8 @@ export default function MapOverlay({ selectedRegion, onRegionSelect, onActivityS
         </div>
       ) : (
         <div>
-          <div className="flex items-center justify-between mb-4">
+          <div className="mb-4">
             <h3 className="font-bold text-white">Voici ce qu'il se trouve à {selectedRegion}</h3>
-            <button onClick={() => onRegionSelect(null)} className="text-xs text-white/70 hover:text-white underline">Changer</button>
           </div>
           <Activities onActivitySelect={onActivitySelect} />
         </div>
