@@ -4,14 +4,13 @@ interface Activity {
 }
 
 const ACTIVITIES: Activity[] = [
-  { id: 'restaurants', name: 'Restaurants' },
-  { id: 'hotels', name: 'Hôtels' },
-  { id: 'loisirs', name: 'Loisirs' },
-  { id: 'sport', name: 'Sport' },
-  { id: 'culture', name: 'Culture' },
-  { id: 'transport', name: 'Transport' },
-  { id: 'shopping', name: 'Shopping' },
-  { id: 'randonnee', name: 'Randonnée' }
+  { id: 'concerts', name: ' Musique' },
+  { id: 'spectacles', name: ' Spectacles' },
+  { id: 'expositions', name: ' Art' },
+  { id: 'sports', name: ' Sports' },
+  { id: 'culture', name: ' Culture' },
+  { id: 'famille', name: ' Enfants' },
+  { id: 'nature', name: ' Nature' }
 ]
 
 interface ActivitiesProps {
@@ -21,7 +20,7 @@ interface ActivitiesProps {
 export default function Activities({ onActivitySelect }: ActivitiesProps) {
   return (
     <div className="space-y-3">
-      <h3 className="font-bold text-white mb-4">Que voulez-vous faire ?</h3>
+      <h3 className="font-bold text-white mb-4">Que voulez-vous y faire ?</h3>
       <div className="space-y-2">
         {ACTIVITIES.map((activity) => (
           <button
